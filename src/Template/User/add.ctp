@@ -9,12 +9,9 @@
     <fieldset>
         <legend><?= __('Add User') ?></legend>
         <?php
-            echo $this->Form->input('First_Name');
-            echo $this->Form->input('Last_Name');
-            echo $this->Form->input('Email');
-            echo $this->Form->input('Mobile');
-            echo $this->Form->input('City');
-            echo $this->Form->input('Country');
+            echo $this->Form->input('user_name');
+            echo $this->Form->input('password');
+            echo $this->Form->input('role');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

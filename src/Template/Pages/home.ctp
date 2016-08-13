@@ -74,7 +74,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                     <li><a href="#">My Account</a></li>
                     <li><a href="#">The Store</a></li>
                     <li class=""><a href="#">Contact</a></li>
-                    <li class=""><a href="#">Login</a></li>
+                    <li class=""><a href="login">Login</a></li>
 
                 </ul>
             </div>

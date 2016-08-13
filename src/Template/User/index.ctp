@@ -10,12 +10,9 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('ID') ?></th>
-                <th><?= $this->Paginator->sort('First_Name') ?></th>
-                <th><?= $this->Paginator->sort('Last_Name') ?></th>
-                <th><?= $this->Paginator->sort('Email') ?></th>
-                <th><?= $this->Paginator->sort('Mobile') ?></th>
-                <th><?= $this->Paginator->sort('City') ?></th>
-                <th><?= $this->Paginator->sort('Country') ?></th>
+                <th><?= $this->Paginator->sort('user_name') ?></th>
+                <th><?= $this->Paginator->sort('password') ?></th>
+                <th><?= $this->Paginator->sort('role') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -23,12 +20,9 @@
             <?php foreach ($user as $user): ?>
             <tr>
                 <td><?= $this->Number->format($user->ID) ?></td>
-                <td><?= h($user->First_Name) ?></td>
-                <td><?= h($user->Last_Name) ?></td>
-                <td><?= h($user->Email) ?></td>
-                <td><?= $this->Number->format($user->Mobile) ?></td>
-                <td><?= h($user->City) ?></td>
-                <td><?= h($user->Country) ?></td>
+                <td><?= h($user->user_name) ?></td>
+                <td><?= h($user->password) ?></td>
+                <td><?= h($user->role) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->ID]) ?>

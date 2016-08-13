@@ -7,16 +7,15 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $ID
- * @property string $First_Name
- * @property string $Last_Name
- * @property string $Email
- * @property int $Mobile
- * @property string $City
- * @property string $Country
+ * @property string $user_name
+ * @property string $password
+ * @property string $role
  */
 class User extends Entity
 {
-
+   public $userName;
+   public $password;
+   public $role;
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -29,5 +28,14 @@ class User extends Entity
     protected $_accessible = [
         '*' => true,
         'ID' => false
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'password'
     ];
 }

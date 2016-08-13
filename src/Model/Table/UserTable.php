@@ -48,29 +48,16 @@ class UserTable extends Table
             ->allowEmpty('ID', 'create');
 
         $validator
-            ->requirePresence('First_Name', 'create')
-            ->notEmpty('First_Name');
+            ->requirePresence('user_name', 'create')
+            ->notEmpty('user_name');
 
         $validator
-            ->requirePresence('Last_Name', 'create')
-            ->notEmpty('Last_Name');
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
 
         $validator
-            ->requirePresence('Email', 'create')
-            ->notEmpty('Email');
-
-        $validator
-            ->integer('Mobile')
-            ->requirePresence('Mobile', 'create')
-            ->notEmpty('Mobile');
-
-        $validator
-            ->requirePresence('City', 'create')
-            ->notEmpty('City');
-
-        $validator
-            ->requirePresence('Country', 'create')
-            ->notEmpty('Country');
+            ->requirePresence('role', 'create')
+            ->notEmpty('role');
 
         return $validator;
     }
