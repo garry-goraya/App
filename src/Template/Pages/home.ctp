@@ -33,216 +33,373 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>
+       <?= $cakeDescription ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->script('jquery-func.js') ?>
+    <?= $this->Html->script('jquery-1.4.1.min.js') ?>
+    <?= $this->Html->script('jquery.slide.js') ?>
+    <?= $this->Html->script('jquery.jcarousel.pack.js') ?>
+   <style>
+      h1#logo a{ display:block; height:61px; text-indent: -4000px; background:url(img/logo.gif); }
+      #slider-nav a.prev{ background:url(img/prev.gif); left:0;}
+      #slider-nav a.next{ background:url(img/next.gif); right:0;}
+      #main { width:100%; background:url(img/main.gif) repeat-x 0 0;}
+      .options .search{ float:left; padding:6px 0 0 0; background:url(img/border.gif) repeat-y right 0; height:33px; margin-right:12px;}
+      .options .search .field{ float:left; width:191px; height:21px; background:url(img/field.gif); padding:6px 5px 0 5px;}
+      .options .search .field input{ width:191px; border:0; background:transparent; color:#fff; font-weight: bold;}
+      .search-submit{ float:left; font-size:0; line-height:0; width:24px; height:27px; background:url(img/search.gif); text-indent: -4000px; border:0; margin-left:9px; cursor:pointer; position:relative; top:1px; margin-right:13px;}
+      .cart strong{ float:left; width:95px; height:36px; background:url(img/cart-price.gif); text-align: right; font-size:20px; color:#701616; line-height:36px; padding:0 7px 0 5px;}
+      .cart-ico{ float:left; width:47px; height:36px; background:url(img/cart.gif) no-repeat 0 0; font-size:0; line-height:0; text-indent: -4000px;}
+       .tabs ul li a span { float:left; height:36px; background:url(img/tab.gif) no-repeat 0 -37px; padding:0 0 0 20px;}
+       #container { background:#fff url(img/container-t.gif) no-repeat 0 0; padding:30px 20px; }
+
+   </style>
 </head>
 <body class="home">
-    <header>
-        <div class="header-image">
-            <?= $this->Html->image('http://cakephp.org/img/logo-cake.png') ?>
-            <h1>Get the Ovens Ready</h1>
+ <header>
+
+<!-- Top -->
+<div id="top">
+    <div class="shell">
+        <!-- Header -->
+        <div id="header">
+            <h1 id="logo"><a href="#">Urgan Gear</a></h1>
+            <div id="navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">The Store</a></li>
+                    <li class=""><a href="#">Contact</a></li>
+                    <li class=""><a href="#">Login</a></li>
+
+                </ul>
+            </div>
         </div>
-    </header>
+        <!-- End Header -->
+
+        <!-- Slider -->
+        <div id="slider">
+            <div id="slider-holder">
+                <ul>
+                    <li><a href="#"><img src="img/slide1.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="img/slide2.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="img/slide1.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="img/slide2.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="img/slide1.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="img/slide2.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+            <div id="slider-nav"> <a href="#" class="prev">Previous</a> <a href="#" class="next">Next</a> </div>
+        </div>
+        <!-- End Slider -->
+    </div>
+</div>
+<!-- Top -->
+  </header>
     <div id="content">
-        <div class="row">
-            <div class="columns large-12 ctp-warning checks">
-                Please be aware that this page will not be shown if you turn off debug mode unless you replace src/Template/Pages/home.ctp with your own version.
+<div id="main">
+    <div class="shell">
+        <!-- Search, etc -->
+        <div class="options">
+            <div class="search">
+                <form action="#" method="post">
+          <span class="field">
+          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
+          </span>
+                    <input type="text" class="search-submit" value="GO" />
+                </form>
             </div>
-            <?php Debugger::checkSecurityKeys(); ?>
-            <div id="url-rewriting-warning" class="columns large-12 url-rewriting checks">
-                <p class="problem">URL rewriting is not properly configured on your server.</p>
-                <p>
-                    1) <a target="_blank" href="http://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a>
-                </p>
-                <p>
-                    2) <a target="_blank" href="http://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
-                </p>
-            </div>
-
-            <div class="columns large-12 checks">
-                <h4>Environment</h4>
-                <?php if (version_compare(PHP_VERSION, '5.5.9', '>=')): ?>
-                    <p class="success">Your version of PHP is 5.5.9 or higher (detected <?= PHP_VERSION ?>).</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP is too low. You need PHP 5.5.9 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</p>
-                <?php endif; ?>
-
-                <?php if (extension_loaded('mbstring')): ?>
-                    <p class="success">Your version of PHP has the mbstring extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the mbstring extension loaded.</p>;
-                <?php endif; ?>
-
-                <?php if (extension_loaded('openssl')): ?>
-                    <p class="success">Your version of PHP has the openssl extension loaded.</p>
-                <?php elseif (extension_loaded('mcrypt')): ?>
-                    <p class="success">Your version of PHP has the mcrypt extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</p>
-                <?php endif; ?>
-
-                <?php if (extension_loaded('intl')): ?>
-                    <p class="success">Your version of PHP has the intl extension loaded.</p>
-                <?php else: ?>
-                    <p class="problem">Your version of PHP does NOT have the intl extension loaded.</p>
-                <?php endif; ?>
-                <hr>
-
-                <h4>Filesystem</h4>
-                <?php if (is_writable(TMP)): ?>
-                    <p class="success">Your tmp directory is writable.</p>
-                <?php else: ?>
-                    <p class="problem">Your tmp directory is NOT writable.</p>
-                <?php endif; ?>
-
-                <?php if (is_writable(LOGS)): ?>
-                    <p class="success">Your logs directory is writable.</p>
-                <?php else: ?>
-                    <p class="problem">Your logs directory is NOT writable.</p>
-                <?php endif; ?>
-
-                <?php $settings = Cache::config('_cake_core_'); ?>
-                <?php if (!empty($settings)): ?>
-                    <p class="success">The <em><?= $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</p>
-                <?php else: ?>
-                    <p class="problem">Your cache is NOT working. Please check the settings in config/app.php</p>
-                <?php endif; ?>
-
-                <hr>
-                <h4>Database</h4>
-                <?php
-                    try {
-                        $connection = ConnectionManager::get('default');
-                        $connected = $connection->connect();
-                    } catch (Exception $connectionError) {
-                        $connected = false;
-                        $errorMsg = $connectionError->getMessage();
-                        if (method_exists($connectionError, 'getAttributes')):
-                            $attributes = $connectionError->getAttributes();
-                            if (isset($errorMsg['message'])):
-                                $errorMsg .= '<br />' . $attributes['message'];
-                            endif;
-                        endif;
-                    }
-                ?>
-                <?php if ($connected): ?>
-                    <p class="success">CakePHP is able to connect to the database.</p>
-                <?php else: ?>
-                    <p class="problem">CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
-                <?php endif; ?>
-
-                <hr>
-                <h4>DebugKit</h4>
-                <?php if (Plugin::loaded('DebugKit')): ?>
-                    <p class="success">DebugKit is loaded.</p>
-                <?php else: ?>
-                    <p class="problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</p>
-                <?php endif; ?>
-            </div>
+            <span class="left"><a href="#">Advanced Search</a></span>
+            <div class="right"> <span class="cart"> <a href="#" class="cart-ico">&nbsp;</a> <strong>$0.00</strong> </span> <span class="left more-links"> <a href="#">Checkout</a> <a href="#">Details</a> </span> </div>
         </div>
-
-        <div class="row">
-            <div class="columns large-6">
-                <h3>Editing this Page</h3>
+        <!-- End Search, etc -->
+        <!-- Content -->
+        <div id="content">
+            <!-- Tabs -->
+            <div class="tabs">
                 <ul>
-                    <li>To change the content of this page, edit: src/Template/Pages/home.ctp.</li>
-                    <li>You can also add some CSS styles for your pages at: webroot/css/.</li>
+                    <li><a href="#" class="active"><span>Safety Shoes</span></a></li>
+                    <li><a href="#"><span>Sport Shoes</span></a></li>
+                    <li><a href="#" class="red"><span>More Shoes</span></a></li>
                 </ul>
             </div>
-            <div class="columns large-6">
-                <h3>Getting Started</h3>
-                <ul>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
-                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
-                </ul>
-                <p>
+            <!-- Tabs -->
+            <!-- Container -->
+            <div id="container">
+                <div class="tabbed">
+                    <!-- First Tab Content -->
+                    <div class="tab-content" style="display:block;">
+                        <div class="items">
+                            <div class="cl">&nbsp;</div>
+                            <ul>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                            </ul>
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- End First Tab Content -->
+                    <!-- Second Tab Content -->
+                    <div class="tab-content">
+                        <div class="items">
+                            <div class="cl">&nbsp;</div>
+                            <ul>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                            </ul>
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- End Second Tab Content -->
+                    <!-- Third Tab Content -->
+                    <div class="tab-content">
+                        <div class="items">
+                            <div class="cl">&nbsp;</div>
+                            <ul>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image3.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image4.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image2.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                                <li>
+                                    <div class="image"> <a href="#"><img src="img/image1.jpg" alt="" /></a> </div>
+                                    <p> Item Number: <span>125515</span><br />
+                                        Size List : <span>8/8.5/9.5/10/11</span><br />
+                                        Brand Name: <a href="#">Adidas Shoes</a> </p>
+                                    <p class="price">Wholesale Price: <strong>53 USD</strong></p>
+                                </li>
+                            </ul>
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- End Third Tab Content -->
+                </div>
+                <!-- Brands -->
+                <div class="brands">
+                    <h3>Brands</h3>
+                    <div class="logos"> <a href="#"><img src="img/logo1.gif" alt="" /></a> <a href="#"><img src="img/logo2.gif" alt="" /></a> <a href="#"><img src="img/logo3.gif" alt="" /></a> <a href="#"><img src="img/logo4.gif" alt="" /></a> <a href="#"><img src="img/logo5.gif" alt="" /></a> </div>
+                </div>
+                <!-- End Brands -->
+     </div>
+    </div>
+     </div>
+                <!-- End Container -->
             </div>
-        </div>
-        <hr/>
-
-        <div class="row">
-            <div class="columns large-12">
-                <h3 class="">More about Cake</h3>
-                <p>
-                    CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Front Controller and MVC.
-                </p>
-                <p>
-                    Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
-                </p>
-
-                <h3>Help and Bug Reports</h3>
-                <ul>
-                    <li>
-                        <a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-                        <ul><li>Live chat about CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <ul><li>CakePHP issues and pull requests</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://discourse.cakephp.org/">CakePHP Forum</a>
-                        <ul><li>CakePHP official discussion forum</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://groups.google.com/group/cake-php">CakePHP Google Group</a>
-                        <ul><li>Community mailing list</li></ul>
-                    </li>
-                </ul>
-
-                <h3>Docs and Downloads</h3>
-                <ul>
-                    <li>
-                        <a href="http://api.cakephp.org/3.0/">CakePHP API</a>
-                        <ul><li>Quick Reference</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
-                        <ul><li>Your Rapid Development Cookbook</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://bakery.cakephp.org">The Bakery</a>
-                        <ul><li>Everything CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://plugins.cakephp.org">CakePHP plugins repo</a>
-                        <ul><li>A comprehensive list of all CakePHP plugins created by the community</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/cakephp/">CakePHP Code</a>
-                        <ul><li>For the Development of CakePHP Git repository, Downloads</li></ul>
-                    </li>
-                    <li>
-                        <a href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                        <ul><li>A curated list of amazingly awesome CakePHP plugins, resources and shiny things.</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://www.cakephp.org">CakePHP</a>
-                        <ul><li>The Rapid Development Framework</li></ul>
-                    </li>
-                </ul>
-
-                <h3>Training and Certification</h3>
-                <ul>
-                    <li>
-                        <a href="http://cakefoundation.org/">Cake Software Foundation</a>
-                        <ul><li>Promoting development related to CakePHP</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://training.cakephp.org/">CakePHP Training</a>
-                        <ul><li>Learn to use the CakePHP framework</li></ul>
-                    </li>
-                    <li>
-                        <a href="http://certification.cakephp.org/">CakePHP Certification</a>
-                        <ul><li>Become a certified CakePHP developer</li></ul>
-                    </li>
-                </ul>
-            </div>
+            <!-- End Content -->
         </div>
     </div>
+    <!-- End Main -->
 </body>
 </html>
